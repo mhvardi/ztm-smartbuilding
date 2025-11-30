@@ -45,23 +45,34 @@ if($sections->have_posts()):
     // BAND
     elseif($type==='band'):
 ?>
-<section class="section-wrap builder-band <?php echo esc_attr($style); ?> parallax-wrap snap">
-  <div class="container" data-aos="fade-up">
-    <h2 class="band-title" data-reveal><?php echo esc_html($title); ?></h2>
-    <?php if($sub): ?><p class="band-sub"><?php echo esc_html($sub); ?></p><?php endif; ?>
-    <?php if($cta1_label && $cta1_link): ?>
-      <p><a class="btn btn-accent-blue" href="<?php echo esc_url(home_url($cta1_link)); ?>"><?php echo esc_html($cta1_label); ?></a></p>
-    <?php endif; ?>
-
-    <?php if($media): ?>
-      <div class="band-media">
-        <?php if(preg_match('/\.(mp4|webm)$/i',$media)): ?>
-          <video src="<?php echo esc_url($media); ?>" autoplay muted loop playsinline></video>
-        <?php else: ?>
-          <img src="<?php echo esc_url($media); ?>" alt="<?php echo esc_attr($title); ?>">
-        <?php endif; ?>
+<section class="section-wrap apple-section builder-band <?php echo esc_attr($style); ?> parallax-wrap snap">
+  <div class="container">
+    <div class="apple-module <?php echo esc_attr($style); ?>" data-aos="fade-up">
+      <div class="module-copy" data-reveal>
+        <p class="eyebrow"><?php echo esc_html(get_post_meta($id,'_ztm_tagline',true) ?: __('ویژگی برجسته','ztm')); ?></p>
+        <h2 class="band-title"><?php echo esc_html($title); ?></h2>
+        <?php if($sub): ?><p class="band-sub"><?php echo esc_html($sub); ?></p><?php endif; ?>
+        <div class="module-cta">
+          <?php if($cta1_label && $cta1_link): ?><a class="btn btn-accent-blue" href="<?php echo esc_url(home_url($cta1_link)); ?>"><?php echo esc_html($cta1_label); ?></a><?php endif; ?>
+          <?php if($cta2_label && $cta2_link): ?><a class="btn btn-outline" href="<?php echo esc_url(home_url($cta2_link)); ?>"><?php echo esc_html($cta2_label); ?></a><?php endif; ?>
+        </div>
       </div>
-    <?php endif; ?>
+      <?php if($media): ?>
+        <div class="module-media">
+          <div class="glass"></div>
+          <?php if(preg_match('/\.(mp4|webm)$/i',$media)): ?>
+            <video src="<?php echo esc_url($media); ?>" autoplay muted loop playsinline></video>
+          <?php else: ?>
+            <img src="<?php echo esc_url($media); ?>" alt="<?php echo esc_attr($title); ?>">
+          <?php endif; ?>
+        </div>
+      <?php else: ?>
+        <div class="module-media module-placeholder">
+          <div class="glass"></div>
+          <span><?php _e('تصویر یا ویدیو را اضافه کنید','ztm'); ?></span>
+        </div>
+      <?php endif; ?>
+    </div>
   </div>
 </section>
 
@@ -69,29 +80,28 @@ if($sections->have_posts()):
     // EXPLORE / SERVICES tiles
     elseif($type==='explore'):
 ?>
-<section class="section-wrap <?php echo esc_attr($style); ?>">
+<section class="section-wrap apple-section <?php echo esc_attr($style); ?>">
   <div class="container section-head">
     <div>
       <h2 class="section-title" data-reveal><?php echo esc_html($title); ?></h2>
       <?php if($sub): ?><p class="section-sub"><?php echo esc_html($sub); ?></p><?php endif; ?>
     </div>
+    <div class="section-meta">
+      <?php if($cta1_label && $cta1_link): ?><a class="link-inline" href="<?php echo esc_url(home_url($cta1_link)); ?>"><?php echo esc_html($cta1_label); ?></a><?php endif; ?>
+      <?php if($cta2_label && $cta2_link): ?><a class="link-inline" href="<?php echo esc_url(home_url($cta2_link)); ?>"><?php echo esc_html($cta2_label); ?></a><?php endif; ?>
+    </div>
   </div>
 
-  <div class="container apple-grid">
-    <?php
-      // child cards of explore are normal posts? For now use saved media/title/cta as one tile.
-    ?>
-    <article class="apple-tile <?php echo $style==='dark'?'dark':'light'; ?>" data-aos="fade-up">
-      <div class="tile-content">
+  <div class="container apple-panels" role="list">
+    <article class="apple-panel <?php echo $style==='dark'?'dark':'light'; ?>" role="listitem" data-aos="fade-up" <?php if($media): ?>style="--panel-image:url('<?php echo esc_url($media); ?>')"<?php endif; ?>>
+      <div class="panel-inner">
+        <p class="eyebrow"><?php echo esc_html(get_post_meta($id,'_ztm_tagline',true) ?: __('کشف بیشتر','ztm')); ?></p>
         <h3><?php echo esc_html($title); ?></h3>
-        <?php if($sub): ?><p><?php echo esc_html($sub); ?></p><?php endif; ?>
+        <?php if($sub): ?><p class="panel-sub"><?php echo esc_html($sub); ?></p><?php endif; ?>
         <div class="tile-cta">
           <?php if($cta1_label && $cta1_link): ?><a class="btn btn-accent-blue" href="<?php echo esc_url(home_url($cta1_link)); ?>"><?php echo esc_html($cta1_label); ?></a><?php endif; ?>
           <?php if($cta2_label && $cta2_link): ?><a class="btn btn-outline" href="<?php echo esc_url(home_url($cta2_link)); ?>"><?php echo esc_html($cta2_label); ?></a><?php endif; ?>
         </div>
-      </div>
-      <div class="tile-media">
-        <?php if($media): ?><img src="<?php echo esc_url($media); ?>" alt=""><?php endif; ?>
       </div>
     </article>
   </div>
