@@ -1,0 +1,1 @@
+<?php get_header(); ?><section class='section'><div class='container' style='text-align:center'><h1 class='section-title'>صفحه پیدا نشد</h1><p class='section-sub'>صفحه‌ای که دنبال آن هستید وجود ندارد.</p><p><a class='btn' href='<?php echo esc_url(home_url('/')); ?>'>بازگشت به خانه</a></p></div></section><?php get_footer(); ?>

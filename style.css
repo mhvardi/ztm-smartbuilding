@@ -1,0 +1,435 @@
+/*
+Theme Name: ZTM SmartBuilding
+Theme URI: https://smartztm.com/
+Author: خلاقیت وردی (Creativity Vardi)
+Author URI: https://injabegard.com/
+Description: قالب اختصاصی مینیمال و لوکس برای شرکت زرین تجارت مبنا. بدون نیاز به ACF، دارای کاتالوگ محصولات و پروژه‌ها و تنظیمات داخلی در سفارشی‌سازی.
+Version: 1.7.0
+Requires at least: 6.3
+Tested up to: 6.7
+Requires PHP: 8.0
+Text Domain: ztm-smartbuilding
+*/
+
+:root{
+  --green:#0db14c;
+  --blue:#006cb6;
+  --gray:#8e979e;
+
+  --bg:#ffffff;
+  --bg-soft:#f6f7f8;
+  --bg-dark:#0b0c0f;
+
+  --text:#0b0c0f;
+  --text-soft:#5d656b;
+
+  --radius:18px;
+  --radius-sm:12px;
+  --shadow:0 12px 40px rgba(0,0,0,.08);
+
+  --container:1200px;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"SF Pro Text","Vazirmatn","IRANSans",sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.7;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+.container{width:min(100% - 2rem,var(--container));margin-inline:auto}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.9rem 1.2rem;border-radius:999px;
+  background:var(--text);color:#fff;font-weight:600;
+  transition:transform .2s ease, background .2s ease, box-shadow .2s ease, opacity .2s ease;
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+}
+.btn:hover{transform:translateY(-2px);background:#000}
+.btn.btn-outline{background:transparent;color:var(--text);border:1px solid #dfe3e6;box-shadow:none}
+.btn.btn-outline:hover{background:var(--bg-soft)}
+
+.site-header{
+  position:sticky;top:0;z-index:999;
+  background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(16px);
+  border-bottom:1px solid #eceff1;
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
+.logo{font-weight:800;letter-spacing:.3px;display:flex;align-items:center;gap:.6rem}
+.logo img{height:42px;width:auto}
+.nav ul{display:flex;gap:1rem;list-style:none;padding:0;margin:0}
+.nav a{padding:.5rem .7rem;border-radius:999px;color:var(--text-soft);font-weight:600}
+.nav a:hover{background:var(--bg-soft);color:var(--text)}
+.nav-toggle{display:none}
+
+.hero{
+  padding:6rem 0 4rem;background:linear-gradient(180deg,#fff,#f7faf8);
+  text-align:center;
+}
+.hero h1{font-size:clamp(2rem,4vw,3.3rem);line-height:1.15;margin:0 0 1rem;font-weight:800}
+.hero p{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-soft);margin:0 auto 1.8rem;max-width:55ch}
+
+.section{padding:4rem 0}
+.section-head{
+  display:flex;align-items:end;justify-content:space-between;gap:1.2rem;margin-bottom:2rem
+}
+.section-title{font-size:clamp(1.4rem,2.6vw,2rem);margin:0;font-weight:800}
+.section-sub{color:var(--text-soft);margin:0}
+
+.grid{display:grid;gap:1.2rem}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{
+  background:var(--bg);border:1px solid #edf0f2;border-radius:var(--radius);
+  padding:1.4rem;box-shadow:var(--shadow);
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card:hover{transform:translateY(-4px);border-color:#e2e7ea;box-shadow:0 18px 55px rgba(0,0,0,.12)}
+.card h3{margin:.3rem 0 .4rem;font-weight:800}
+.card p{color:var(--text-soft);margin:0}
+
+.split{
+  display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center
+}
+
+.footer{
+  padding:3rem 0;background:var(--bg-dark);color:#cdd3d8;margin-top:3rem
+}
+.footer a{color:#fff}
+.footer-grid{display:grid;gap:1.6rem;grid-template-columns:2fr 1fr 1fr}
+.small{font-size:.93rem;color:#aab2b8}
+
+.archive-hero{padding:3rem 0;background:var(--bg-soft)}
+.post-card .thumb{border-radius:16px;overflow:hidden;margin-bottom:.8rem;background:#eee}
+.post-meta{color:var(--text-soft);font-size:.9rem;margin-bottom:.2rem}
+
+.pagination{display:flex;gap:.5rem;justify-content:center;margin-top:2rem}
+.pagination a,.pagination span{
+  padding:.5rem .8rem;border:1px solid #e2e7ea;border-radius:999px
+}
+
+.form-control{width:100%;padding:.9rem 1rem;border-radius:12px;border:1px solid #e2e7ea;background:#fff}
+label{font-weight:600}
+
+/* Apple-like feature bands */
+.band{
+  padding:5rem 0;
+  text-align:center;
+}
+.band.dark{ background:#000;color:#fff; }
+.band.light{ background:var(--bg-soft);color:var(--text); }
+.band .band-title{
+  font-size:clamp(1.8rem,4vw,3rem);font-weight:900;letter-spacing:-.5px;margin:0 0 .8rem;
+}
+.band .band-sub{
+  font-size:clamp(1rem,2vw,1.3rem);opacity:.8;margin:0 auto 1.2rem;max-width:60ch;
+}
+.band-media{
+  margin-top:2rem;border-radius:28px;overflow:hidden;
+  box-shadow:0 25px 80px rgba(0,0,0,.35);
+}
+.band-media img, .band-media video{width:100%;height:auto;display:block}
+
+@media (max-width: 900px){
+  .grid-3{grid-template-columns:1fr 1fr}
+  .split{grid-template-columns:1fr}
+}
+@media (max-width: 640px){
+  .grid-3,.grid-2{grid-template-columns:1fr}
+  .nav ul{
+    position:fixed;inset-inline:0;top:64px;background:#fff;border-top:1px solid #eceff1;
+    padding:1rem;flex-direction:column;transform:translateY(-10px);opacity:0;pointer-events:none;
+    transition:.2s ease;
+  }
+  .nav ul.open{transform:translateY(0);opacity:1;pointer-events:auto}
+  .nav-toggle{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;border:1px solid #e2e7ea}
+}
+
+
+/* ====== Fullscreen Hero (Apple-like) ====== */
+.hero-full{
+  position:relative;
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:7rem 0 5rem;
+  background:#000;
+  color:#fff;
+  overflow:hidden;
+}
+.hero-full .hero-bg{
+  position:absolute;inset:0;z-index:0;
+}
+.hero-full video,
+.hero-full img{
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:saturate(105%) contrast(105%);
+  transform:scale(1.02);
+}
+.hero-full .hero-overlay{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(1000px 600px at 50% 20%, rgba(0,0,0,.25), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.7) 60%, #000);
+}
+.hero-full .hero-content{position:relative;z-index:2}
+.hero-full h1{
+  font-size:clamp(2.2rem,5vw,4.1rem);
+  font-weight:900;letter-spacing:-.6px;margin:0 0 1rem;
+}
+.hero-full p{
+  font-size:clamp(1.05rem,2vw,1.35rem);
+  opacity:.9;margin:0 auto 1.8rem;max-width:62ch;
+}
+.hero-full .hero-badges{
+  display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.2rem
+}
+.badge{
+  padding:.35rem .7rem;border-radius:999px;
+  background:rgba(255,255,255,.12);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.18);
+  font-size:.9rem;
+}
+
+/* ====== Apple-like full bands ====== */
+.band-full{
+  position:relative;
+  padding:7rem 0;
+  text-align:center;
+  overflow:hidden;
+}
+.band-full.dark{background:#000;color:#fff;}
+.band-full.light{background:#fff;color:var(--text);}
+.band-full .band-media{
+  width:min(1100px,100% - 2rem);
+  margin:2.4rem auto 0;
+  border-radius:32px;overflow:hidden;
+  box-shadow:0 30px 110px rgba(0,0,0,.45);
+}
+.band-full .band-media video,
+.band-full .band-media img{
+  width:100%;height:auto;display:block;
+}
+.band-full .band-title{
+  font-size:clamp(1.9rem,4.2vw,3.3rem);
+  font-weight:900;letter-spacing:-.5px;margin:0 0 .8rem;
+}
+.band-full .band-sub{
+  font-size:clamp(1rem,2vw,1.25rem);
+  opacity:.8;margin:0 auto 1rem;max-width:68ch;
+}
+
+/* ====== Parallax layers ====== */
+.parallax-wrap{position:relative;overflow:hidden}
+.parallax-layer{
+  position:absolute;inset:0;pointer-events:none;opacity:.25;
+  background-position:center;background-size:cover;
+  transform:translateY(0);
+}
+
+/* ====== Explore grid (Apple-like tiles) ====== */
+.explore{
+  background:var(--bg-soft);
+  padding:5rem 0;
+}
+.explore-grid{
+  display:grid;gap:1rem;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+.explore-card{
+  position:relative;
+  border-radius:26px;
+  overflow:hidden;
+  min-height:340px;
+  background:#000;color:#fff;
+  display:flex;align-items:flex-end;
+  padding:1.6rem;
+  box-shadow:var(--shadow);
+}
+.explore-card.light{background:#fff;color:var(--text);border:1px solid #edf0f2}
+.explore-card .media{
+  position:absolute;inset:0;z-index:0;
+}
+.explore-card .media img{width:100%;height:100%;object-fit:cover;opacity:.9}
+.explore-card .content{position:relative;z-index:2;max-width:60%}
+.explore-card h3{margin:0 0 .5rem;font-size:1.6rem;font-weight:900;letter-spacing:-.3px}
+.explore-card p{margin:0 0 1rem;opacity:.85}
+.explore-card .btn{background:var(--blue)}
+.explore-card.light .btn{background:var(--green)}
+
+@media (max-width:900px){
+  .explore-grid{grid-template-columns:1fr}
+  .explore-card .content{max-width:100%}
+}
+
+/* ====== Sticky subnav ====== */
+.subnav{
+  position:sticky;top:64px;z-index:998;
+  background:rgba(255,255,255,.9);
+  border-bottom:1px solid #eceff1;
+  backdrop-filter:saturate(180%) blur(12px);
+}
+.subnav.dark{background:rgba(0,0,0,.85);color:#fff;border-color:#111}
+.subnav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.6rem 0;gap:1rem;flex-wrap:wrap
+}
+.subnav-links{display:flex;gap:.4rem;flex-wrap:wrap}
+.subnav-links a{
+  padding:.35rem .7rem;border-radius:999px;font-weight:700;
+  color:inherit;opacity:.75
+}
+.subnav-links a:hover{opacity:1;background:var(--bg-soft)}
+.subnav.dark .subnav-links a:hover{background:rgba(255,255,255,.08)}
+
+/* accent buttons */
+.btn-accent-green{background:var(--green)}
+.btn-accent-blue{background:var(--blue)}
+.btn-accent-green:hover,.btn-accent-blue:hover{opacity:.9}
+
+
+/* ====== IRANSansX Variable Font ====== */
+@font-face {
+  font-family: "IRANSansX";
+  src: url("assets/fonts/IRANSansXVF.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+body, button, input, textarea {
+  font-family: "IRANSansX", system-ui, sans-serif;
+}
+
+/* ====== Apple-like tiles (text top, PNG bottom) ====== */
+.apple-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+@media (max-width:900px){
+  .apple-grid{grid-template-columns:1fr;}
+}
+
+.apple-tile{
+  border-radius:28px;
+  padding:32px 28px 0;
+  min-height:420px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  overflow:hidden;
+  border:1px solid #eef1f3;
+  background:#fff;
+  box-shadow:0 18px 60px rgba(0,0,0,.06);
+}
+.apple-tile.dark{
+  background:#000;
+  color:#fff;
+  border-color:#111;
+  box-shadow:0 22px 70px rgba(0,0,0,.55);
+}
+.apple-tile h3{
+  font-size:clamp(1.25rem,2.2vw,1.65rem);
+  font-weight:800;
+  letter-spacing:-.2px;
+  margin:0 0 .6rem;
+}
+.apple-tile p{
+  margin:0 auto 1rem;
+  max-width:40ch;
+  opacity:.85;
+  font-size:1rem;
+}
+.tile-cta{
+  display:flex;
+  gap:.6rem;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:.6rem;
+}
+.tile-media{
+  margin-top:auto;
+  width:100%;
+  display:grid;
+  place-items:center;
+  padding-top:18px;
+}
+.tile-media img{
+  max-width:88%;
+  height:auto;
+  transform:translateY(10px);
+  filter:drop-shadow(0 35px 80px rgba(0,0,0,.25));
+}
+.apple-tile.dark .tile-media img{
+  filter:drop-shadow(0 35px 90px rgba(0,0,0,.7));
+}
+
+/* softer typography overall */
+.section-title{font-weight:800;font-size:clamp(1.35rem,2.4vw,1.9rem)}
+.hero-full h1{font-weight:850;font-size:clamp(2rem,4.2vw,3.3rem)}
+.band-full .band-title{font-weight:850;font-size:clamp(1.7rem,3.8vw,2.8rem)}
+
+
+/* ====== Apple-like Logo Hero ====== */
+.logo-hero{
+  position:relative;
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  background:#f5f6f7;
+  overflow:hidden;
+  text-align:center;
+  padding:8rem 0 5rem;
+}
+.logo-hero .logo-wrap{
+  width:min(260px,60vw);
+  margin:0 auto 1.8rem;
+  position:relative;
+}
+.logo-hero .logo-wrap img{
+  width:100%;height:auto;display:block;
+  filter:drop-shadow(0 25px 60px rgba(0,0,0,.18));
+  transform-origin:center;
+}
+.logo-hero h1{
+  font-size:clamp(1.9rem,3.6vw,3rem);
+  font-weight:850;letter-spacing:-.3px;margin:0 0 .8rem;
+}
+.logo-hero p{
+  font-size:clamp(1rem,2vw,1.2rem);
+  opacity:.85;max-width:62ch;margin:0 auto 1.6rem;
+}
+.logo-hero .scroll-down{
+  position:absolute;left:50%;bottom:24px;transform:translateX(-50%);
+  width:44px;height:44px;border-radius:999px;
+  display:grid;place-items:center;
+  background:#fff;border:1px solid #e7eaee;
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+  cursor:pointer;
+}
+.logo-hero .scroll-down::after{
+  content:"";width:8px;height:8px;border-right:2px solid #111;border-bottom:2px solid #111;
+  transform:rotate(45deg);margin-top:-4px;
+  animation:arrowBounce 1.8s infinite ease-in-out;
+}
+@keyframes arrowBounce{
+  0%,100%{transform:translateY(0) rotate(45deg);}
+  50%{transform:translateY(6px) rotate(45deg);}
+}
+
+/* ====== Sections Builder admin visual cards (frontend) ====== */
+.section-wrap{padding:7rem 0}
+.section-wrap.dark{background:#000;color:#fff}
+.section-wrap.light{background:#fff;color:var(--text)}
+
+/* simple band builder layout */
+.builder-band .band-media{margin-top:2rem;border-radius:28px;overflow:hidden}
+.builder-band video,.builder-band img{width:100%;height:auto;display:block}
+
+/* explore/services in builder uses existing apple-grid & apple-tile */

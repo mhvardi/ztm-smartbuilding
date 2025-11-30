@@ -1,0 +1,1 @@
+<?php if(is_active_sidebar('sidebar-1')){dynamic_sidebar('sidebar-1');} else {echo '<div class="card"><h3>سایدبار</h3><p class="small">ابزارک‌ها را اضافه کنید.</p></div>'; }
